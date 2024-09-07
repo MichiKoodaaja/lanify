@@ -204,7 +204,13 @@ require_once '../src/init.php';
                 echo $templates->render('reset_lomake', ['error' => '']);
                 break;
               }
-        
+              break;
+    case (bool)preg_match('/\/admin.*/', $request):
+      if ($loggeduser["admin"]) {
+        echo "ylläpitosivut";
+      } else {
+        echo $templates->render('admin_ei_oikeuksia');
+      }
 
             break;
     default:
